@@ -1,0 +1,19 @@
+module sim();
+reg clk;
+reg mode,Load;
+reg [3:0]X,Y;
+wire [3:0]out,out_x,out_y;
+    counter uut(.clk(clk),.mode(mode),.Load(Load),.X(X),.Y(Y),.out(out),.out_x(out_x),.out_y(out_y));
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
+    initial begin
+    
+    X = 4'b1001; Y = 4'b1111;
+    mode = 0; Load = 1; #10;
+    mode = 0; Load = 0; #70;
+    mode = 1; Load = 1; #10;
+    mode = 1; Load = 0; #100;
+    end
+endmodule
